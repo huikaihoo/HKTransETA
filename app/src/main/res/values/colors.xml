@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/colorSettings</color>
+    <color name="colorPrimaryDark">@color/colorSettingsDark</color>
+    <color name="colorAccent">@color/colorSettingsAccent</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorNavBackground">#212121</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorMenuWhite">#F5F5F5</color>
+    <color name="colorMenuGrey">#424242</color>
+
+    <color name="colorNavItemBlack">#8A000000</color>
+    <color name="colorNavItemWhite">#1EFFFFFF</color>
+
+    <color name="colorKmb">#F44336</color>
+    <color name="colorKmbDark">#D32F2F</color>
+    <color name="colorKmbAccent">#FF5252</color>
+
+    <color name="colorNwfb">#FF9800</color>
+    <color name="colorNwfbDark">#F57C00</color>
+    <color name="colorNwfbAccent">#FFAB40</color>
+
+    <color name="colorTram">#388E3C</color>
+    <color name="colorTramDark">#1B5E20</color>
+    <color name="colorTramAccent">#00C853</color>
+
+    <color name="colorFerry">#3F51B5</color>
+    <color name="colorFerryDark">#303F9F</color>
+    <color name="colorFerryAccent">#536DFE</color>
+
+    <color name="colorMtr">#9C27B0</color>
+    <color name="colorMtrDark">#7B1FA2</color>
+    <color name="colorMtrAccent">#E040FB</color>
+
+    <color name="colorSettings">#1B1B1B</color>
+    <color name="colorSettingsDark">#000000</color>
+    <color name="colorSettingsAccent">#00BCD4</color>
+    <color name="colorSettingsAccent2">#FFE0B2</color>
+</resources>

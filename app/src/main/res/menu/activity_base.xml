@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".common.BaseActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/search"
+        android:orderInCategory="10"
+        android:icon="@drawable/ic_fab_search"
+        android:iconifiedByDefault="true"
+        android:visible="false"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="@string/refresh"
+        android:orderInCategory="110"
+        android:icon="@drawable/ic_menu_refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_route_list"
+        android:title="@string/route_list"
+        android:orderInCategory="120"
+        android:icon="@drawable/ic_menu_route_list"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_edit"
+        android:title="@string/edit"
+        android:orderInCategory="210"
+        android:icon="@drawable/ic_menu_edit"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_add_shortcut"
+        android:title="@string/add_shortcut"
+        android:orderInCategory="220"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+
+</menu>

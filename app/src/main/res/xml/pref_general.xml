@@ -1,0 +1,70 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="general"
+        android:title="@string/general_settings"
+        android:order="10">
+
+        <ListPreference
+            android:key="eta_update_interval"
+            android:title="@string/eta_update_interval"
+            android:entries="@array/eta_update_interval_entries"
+            android:entryValues="@array/eta_update_interval_values"
+            android:defaultValue="30" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="testing"
+        android:title="@string/testing"
+        android:order="110">
+
+        <EditTextPreference
+            android:key="parameters"
+            android:title="@string/parameters"
+            android:inputType="text"
+            android:defaultValue="release"
+            android:singleLine="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="about"
+        android:title="@string/about"
+        android:order="120">
+
+        <Preference
+            android:key="app_name"
+            android:title="@string/app_name"
+            android:summary="@string/app_name_summary"
+            android:persistent="false" />
+
+        <Preference
+            android:key="app_version"
+            android:title="@string/app_version"
+            android:persistent="false" />
+
+        <PreferenceScreen
+            android:key="open_source_licenses"
+            android:title="@string/open_source_licenses"
+            android:summary="@string/open_source_licenses_summary"
+            android:persistent="false">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="hoo.hktranseta.main.WebViewActivity"
+                android:targetPackage="hoo.hktranseta"
+                android:data="@string/open_source_licenses_path">
+                <extra
+                    android:name="title"
+                    android:value="@string/open_source_licenses" />
+                <extra
+                    android:name="url"
+                    android:value="@string/open_source_licenses_path" />
+            </intent>
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

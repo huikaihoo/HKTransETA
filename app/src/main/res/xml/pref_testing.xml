@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/testing">
+
+        <MultiSelectListPreference
+            android:key="enabled_activities"
+            android:title="@string/enabled_activities"
+            android:entries="@array/activities_entries"
+            android:entryValues="@array/activities_values"
+            android:defaultValue="@array/activities_production_values" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

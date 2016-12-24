@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="hoo.hktranseta">
+
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:resizeableActivity="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.samsung.android.sdk.multiwindow.enable"
+            android:value="true" />
+        <meta-data
+            android:name="com.samsung.android.sdk.multiwindow.penwindow.enable"
+            android:value="true" />
+
+        <!-- Start Code -->
+        <activity
+            android:name=".main.StartActivity"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.MULTIWINDOW_LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+
+        <!-- Main Activities -->
+        <activity
+            android:name=".main.kmb.KmbActivity"
+            android:label="@string/kmb_full"
+            android:theme="@style/AppTheme.Kmb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.nwfb.NwfbActivity"
+            android:label="@string/nwfb_full"
+            android:theme="@style/AppTheme.Nwfb">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.tram.TramActivity"
+            android:label="@string/tram"
+            android:theme="@style/AppTheme.Tram">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.ferry.FerryActivity"
+            android:label="@string/ferry"
+            android:theme="@style/AppTheme.Ferry">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.mtr.MtrActivity"
+            android:label="@string/mtr"
+            android:theme="@style/AppTheme.Mtr">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other Activities -->
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.WebViewActivity"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

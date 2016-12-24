@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- App Theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat" />
+
+    <!-- App Theme (KMB) -->
+    <style name="AppTheme.Kmb" parent="AppTheme">
+        <item name="colorPrimary">@color/colorKmb</item>
+        <item name="colorPrimaryDark">@color/colorKmbDark</item>
+        <item name="colorAccent">@color/colorKmbAccent</item>
+    </style>
+
+    <!-- App Theme (NWFB) -->
+    <style name="AppTheme.Nwfb" parent="AppTheme">
+        <item name="colorPrimary">@color/colorNwfb</item>
+        <item name="colorPrimaryDark">@color/colorNwfbDark</item>
+        <item name="colorAccent">@color/colorNwfbAccent</item>
+    </style>
+
+    <!-- App Theme (Tram) -->
+    <style name="AppTheme.Tram" parent="AppTheme">
+        <item name="colorPrimary">@color/colorTram</item>
+        <item name="colorPrimaryDark">@color/colorTramDark</item>
+        <item name="colorAccent">@color/colorTramAccent</item>
+    </style>
+
+    <!-- App Theme (Ferry) -->
+    <style name="AppTheme.Ferry" parent="AppTheme">
+        <item name="colorPrimary">@color/colorFerry</item>
+        <item name="colorPrimaryDark">@color/colorFerryDark</item>
+        <item name="colorAccent">@color/colorFerryAccent</item>
+    </style>
+
+    <!-- App Theme (MTR) -->
+    <style name="AppTheme.Mtr" parent="AppTheme">
+        <item name="colorPrimary">@color/colorMtr</item>
+        <item name="colorPrimaryDark">@color/colorMtrDark</item>
+        <item name="colorAccent">@color/colorMtrAccent</item>
+    </style>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/nav_group_main"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_kmb"
+            android:icon="@drawable/ic_nav_kmb"
+            android:title="@string/kmb_full" />
+        <item
+            android:id="@+id/nav_nwfb"
+            android:icon="@drawable/ic_nav_nwfb"
+            android:title="@string/nwfb_full" />
+        <item
+            android:id="@+id/nav_tram"
+            android:icon="@drawable/ic_nav_tram"
+            android:title="@string/tram" />
+        <item
+            android:id="@+id/nav_ferry"
+            android:icon="@drawable/ic_nav_ferry"
+            android:title="@string/ferry" />
+        <item
+            android:id="@+id/nav_mtr"
+            android:icon="@drawable/ic_nav_mtr"
+            android:title="@string/mtr" />
+    </group>
+    <group
+        android:id="@+id/nav_group_others">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/settings" />
+    </group>
+</menu>

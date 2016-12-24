@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="kmb"
+        android:icon="@drawable/ic_shortcut_kmb"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/kmb_short"
+        android:shortcutLongLabel="@string/kmb_full">
+        <intent
+            android:targetPackage="hoo.hktranseta"
+            android:action="android.intent.action.VIEW"
+            android:targetClass="hoo.hktranseta.main.kmb.KmbActivity">
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="nwfb"
+        android:icon="@drawable/ic_shortcut_nwfb"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/nwfb_short"
+        android:shortcutLongLabel="@string/nwfb_full">
+        <intent
+            android:targetPackage="hoo.hktranseta"
+            android:action="android.intent.action.VIEW"
+            android:targetClass="hoo.hktranseta.main.nwfb.NwfbActivity">
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="tram"
+        android:icon="@drawable/ic_shortcut_tram"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/tram"
+        android:shortcutLongLabel="@string/tram">
+        <intent
+            android:targetPackage="hoo.hktranseta"
+            android:action="android.intent.action.VIEW"
+            android:targetClass="hoo.hktranseta.main.tram.TramActivity">
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="ferry"
+        android:icon="@drawable/ic_shortcut_ferry"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/ferry"
+        android:shortcutLongLabel="@string/ferry">
+        <intent
+            android:targetPackage="hoo.hktranseta"
+            android:action="android.intent.action.VIEW"
+            android:targetClass="hoo.hktranseta.main.ferry.FerryActivity">
+        </intent>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="mtr"
+        android:icon="@drawable/ic_shortcut_mtr"
+        android:enabled="true"
+        android:shortcutShortLabel="@string/mtr"
+        android:shortcutLongLabel="@string/mtr">
+        <intent
+            android:targetPackage="hoo.hktranseta"
+            android:action="android.intent.action.VIEW"
+            android:targetClass="hoo.hktranseta.main.mtr.MtrActivity">
+        </intent>
+    </shortcut>
+
+</shortcuts>
+
