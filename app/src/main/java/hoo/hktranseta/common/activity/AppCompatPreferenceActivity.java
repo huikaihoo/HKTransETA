@@ -1,12 +1,10 @@
 package hoo.hktranseta.common.activity;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -25,16 +23,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import hoo.hktranseta.BuildConfig;
 import hoo.hktranseta.R;
-import hoo.hktranseta.common.Constants;
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
  * to be used with AppCompat.
  */
-public abstract class AppCompatPreferenceActivity extends PreferenceActivity
-        implements Constants.AppPreferences {
+public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 
     private AppCompatDelegate mDelegate;
 
@@ -163,32 +158,5 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity
             mDelegate = AppCompatDelegate.create(this, null);
         }
         return mDelegate;
-    }
-
-    public int getAppMode(){
-        if (BuildConfig.DEBUG) {
-            //return Constants.AppMode.DEBUG;
-        }
-        return Constants.AppMode.getAppMode(getStringFromDefaultSharePreferences(Constants.Prefs.PARAMETERS, ""));
-    }
-
-    public int getIntFromDefaultSharePreferences(String key, int defaultValue){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getInt(key, defaultValue);
-    }
-
-    public void setIntFromDefaultSharePreferences(String key, int value){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().putInt(key, value).apply();
-    }
-
-    public String getStringFromDefaultSharePreferences(String key, String defaultValue){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        return sharedPreferences.getString(key, defaultValue);
-    }
-
-    public void setStringFromDefaultSharePreferences(String key, String value){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().putString(key, value).apply();
     }
 }

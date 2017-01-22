@@ -10,10 +10,9 @@ import hoo.hktranseta.BuildConfig;
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.fragment.BasePreferenceFragment;
+import hoo.hktranseta.common.worker.SharedPrefsManager;
 
-import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
 
 /**
  * This fragment shows general preferences only. It is used when the
@@ -34,17 +33,16 @@ public class GeneralPreferenceFragment extends BasePreferenceFragment {
         // to their values. When their values change, their summaries are
         // updated to reflect the new value, per the Android Design
         // guidelines.
-        bindPreferenceSummaryToValue(findPreference(Constants.Prefs.ETA_UPDATE_INTERVAL));
+        bindPreferenceSummaryToValue(findPreference(Constants.Prefs.DATABASE_UPDATE_FREQUENCY));
+        bindPreferenceSummaryToValue(findPreference(Constants.Prefs.ETA_UPDATE_FREQUENCY));
         bindPreferenceSummaryToValue(findPreference(Constants.Prefs.PARAMETERS));
-
-        assertTrue(getActivity() instanceof Constants.AppPreferences);
-        Constants.AppPreferences parentActivity = (Constants.AppPreferences) getActivity();
 
         // Testing PreferenceCategory
         mTestingPreferenceCategory = (PreferenceCategory) findPreference(Constants.Prefs.TESTING);
         assertNotNull(mTestingPreferenceCategory);
 
-        if (parentActivity.getAppMode() == Constants.AppMode.RELEASE){
+        SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
+        if (sharedPrefsManager.getAppMode() == Constants.AppMode.RELEASE){
             getPreferenceScreen().removePreference(mTestingPreferenceCategory);
         }
 

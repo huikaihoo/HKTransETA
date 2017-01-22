@@ -50,11 +50,12 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        if (actionBar != null) {
+            actionBar.setTitle(intent.getStringExtra(Constants.Extra.TITLE));
+        }
+
         if (savedInstanceState == null) {
-            Intent intent = getIntent();
-            if (actionBar != null) {
-                actionBar.setTitle(intent.getStringExtra(Constants.Extra.TITLE));
-            }
             mWebView.loadUrl(intent.getStringExtra(Constants.Extra.URL));
         } else {
             mWebView.restoreState(savedInstanceState);

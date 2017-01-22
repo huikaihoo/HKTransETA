@@ -14,15 +14,6 @@
         android:translateY="12"
         android:scaleX="1"
         android:scaleY="1">
-        <shape xmlns:android="http://schemas.android.com/apk/res/android"
-            android:shape="rectangle">
-            <gradient
-                android:angle="135"
-                android:centerColor="#4CAF50"
-                android:endColor="#2E7D32"
-                android:startColor="#81C784"
-                android:type="linear" />
-        </shape>
         <path
             android:fillColor="@color/colorMenuWhite"
             android:pathData="@string/vpd_ferry"/>

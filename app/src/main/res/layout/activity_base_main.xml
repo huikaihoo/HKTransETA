@@ -2,7 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_content"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -29,22 +29,23 @@
             android:layout_height="wrap_content"
             app:tabMode="scrollable"
             app:tabIndicatorColor="@android:color/white"
-            app:tabIndicatorHeight="3dp" />
+            app:tabIndicatorHeight="@dimen/tab_indicator_height" />
+
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxHeight="@dimen/process_bar_height"
+            android:minHeight="@dimen/process_bar_height"
+            android:progress="30"
+            android:secondaryProgress="60"
+            app:mpb_progressStyle="horizontal"
+            app:mpb_useIntrinsicPadding="false"
+            app:mpb_showProgressBackground="true"
+            android:background="@color/colorBlack"
+            style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal.NoPadding" />
 
     </android.support.design.widget.AppBarLayout>
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:progress="50"
-        android:indeterminate="false"
-        android:maxHeight="3dp"
-        android:minHeight="3dp"
-        android:layout_weight="1"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/colorBlack" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
@@ -58,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_fab_search" />
+        app:srcCompat="@drawable/ic_fab_search"
+        app:layout_behavior="hoo.hktranseta.common.view.FloatingActionButtonBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

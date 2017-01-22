@@ -5,13 +5,15 @@
     <color name="colorAccent">@color/colorSettingsAccent</color>
 
     <color name="colorBlack">#000000</color>
-    <color name="colorNavBackground">#212121</color>
+    <color name="colorGreyBackground">#212121</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorMenuWhite">#F5F5F5</color>
     <color name="colorMenuGrey">#424242</color>
 
     <color name="colorNavItemBlack">#8A000000</color>
     <color name="colorNavItemWhite">#1EFFFFFF</color>
+
+    <color name="colorItemWhite">#4FFFFFFF</color>
 
     <color name="colorKmb">#F44336</color>
     <color name="colorKmbDark">#D32F2F</color>

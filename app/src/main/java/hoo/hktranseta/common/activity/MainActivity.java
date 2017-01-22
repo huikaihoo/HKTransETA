@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
+import hoo.hktranseta.common.worker.SharedPrefsManager;
 import hoo.hktranseta.main.ferry.FerryActivity;
 import hoo.hktranseta.main.kmb.KmbActivity;
 import hoo.hktranseta.main.mtr.MtrActivity;
@@ -74,6 +75,7 @@ public class MainActivity extends BaseActivity
         tabLayout.setupWithViewPager(mViewPager);
         //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
+        // Set up Floating Action Button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +112,8 @@ public class MainActivity extends BaseActivity
 
         // Remember the current Activity
         assertNotNull(mChildClass);
-        setStringFromDefaultSharePreferences(Constants.Prefs.START_ACTIVITY, mChildClass.getName());
+        SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
+        sharedPrefsManager.setString(Constants.Prefs.START_ACTIVITY, mChildClass.getName());
     }
 
     @Override
@@ -135,12 +138,21 @@ public class MainActivity extends BaseActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        Intent intent;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         switch (id) {
+            case R.id.menu_refresh:
+                return true;
+            case R.id.menu_route_list:
+                return true;
+            case R.id.menu_edit:
+                return true;
+            case R.id.menu_add_shortcut:
+                return true;
             case R.id.action_settings:
-                Intent intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, SettingsActivity.class);
                 intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, GeneralPreferenceFragment.class.getName());
                 intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
                 startActivity(intent);
@@ -190,7 +202,8 @@ public class MainActivity extends BaseActivity
                 break;
             case R.id.nav_settings:
                 intent = new Intent(this, SettingsActivity.class);
-                if (getAppMode() != Constants.AppMode.DEBUG) {
+                SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
+                if (sharedPrefsManager.getAppMode() != Constants.AppMode.DEBUG) {
                     intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, GeneralPreferenceFragment.class.getName());
                     intent.putExtra(PreferenceActivity.EXTRA_NO_HEADERS, true);
                 }
@@ -243,6 +256,28 @@ public class MainActivity extends BaseActivity
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
             });
+
+
+//            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
+//            {
+//                @Override
+//                public void onScrolled(RecyclerView recyclerView, int dx, int dy)
+//                {
+//                    if (dy > 0 ||dy<0 && fab.isShown())
+//                    {
+//                        fab.hide();
+//                    }
+//                }
+//                @Override
+//                public void onScrollStateChanged(RecyclerView recyclerView, int newState)
+//                {
+//                    if (newState == RecyclerView.SCROLL_STATE_IDLE)
+//                    {
+//                        fab.show();
+//                    }
+//                    super.onScrollStateChanged(recyclerView, newState);
+//                }
+//            });
             return rootView;
         }
     }

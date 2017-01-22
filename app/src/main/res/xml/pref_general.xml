@@ -6,11 +6,18 @@
         android:order="10">
 
         <ListPreference
-            android:key="eta_update_interval"
-            android:title="@string/eta_update_interval"
-            android:entries="@array/eta_update_interval_entries"
-            android:entryValues="@array/eta_update_interval_values"
+            android:key="eta_update_frequency"
+            android:title="@string/eta_update_frequency"
+            android:entries="@array/eta_update_frequency_entries"
+            android:entryValues="@array/eta_update_frequency_values"
             android:defaultValue="30" />
+
+        <ListPreference
+            android:key="database_update_frequency"
+            android:title="@string/database_update_frequency"
+            android:entries="@array/database_update_frequency_entries"
+            android:entryValues="@array/database_update_frequency_values"
+            android:defaultValue="8" />
 
     </PreferenceCategory>
 

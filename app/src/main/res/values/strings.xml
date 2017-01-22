@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HKTransETA</string>
 
@@ -7,7 +8,7 @@
     <!-- Code Title -->
     <string name="kmb_full">KMB/LWB</string>
     <string name="kmb_short">KMB</string>
-    <string name="nwfb_full">NWFB/CB</string>
+    <string name="nwfb_full">NWFB/CTB</string>
     <string name="nwfb_short">NWFB</string>
     <string name="tram">Tram</string>
     <string name="ferry">Ferry</string>
@@ -15,27 +16,46 @@
     <string name="settings">Settings</string>
 
     <!-- Menu Items -->
+    <!-- Main Menu Items -->
     <string name="search">Search</string>
     <string name="refresh">Refresh</string>
-    <string name="route_list">Route List</string>
+    <string name="route_list">Route list</string>
     <string name="edit">Edit</string>
-    <string name="add_shortcut">Add Shortcut</string>
+    <string name="add_shortcut">Add shortcut</string>
 
+    <!-- Common Strings -->
+    <string name="to">To\u0020</string>
+    <string name="loading">Loading...</string>
+    <string name="no_data">No data</string>
+    <string name="error_occur">Error occur</string>
+
+    <!-- Common Symbol -->
+    <string name="arrow_one_way" translatable="false">\u0020→\u0020</string>
+    <string name="arrow_two_ways" translatable="false">\u0020⇄\u0020</string>
+    <string name="arrow_circular" translatable="false">\u0020⟲\u0020</string>
+
+    <!-- KMB Bottom Menu Items -->
+    <string name="timetable">Timetable</string>
+    <string name="route">Route</string>
+    <string name="interchange">Interchange</string>
+    <string name="notice">Notice</string>
+
+    <!-- Settings Menu Items -->
     <string name="open_in_play_store">Open in Play Store</string>
 
     <!-- Settings -->
     <!-- General Settings -->
     <string name="general_settings">General Settings</string>
-    <string name="eta_update_interval">ETA Update Interval</string>
-    <string-array name="eta_update_interval_entries">
+    <string name="eta_update_frequency">ETA auto update frequency</string>
+    <string-array name="eta_update_frequency_entries">
         <item>15 seconds</item>
         <item>20 seconds</item>
-        <item>30 seconds</item>
+        <item>30 seconds (Default)</item>
         <item>45 seconds</item>
         <item>60 seconds</item>
         <item>Never</item>
     </string-array>
-    <string-array name="eta_update_interval_values">
+    <string-array name="eta_update_frequency_values" translatable="false">
         <item>15</item>
         <item>20</item>
         <item>30</item>
@@ -43,13 +63,28 @@
         <item>60</item>
         <item>-1</item>
     </string-array>
+    <string name="database_update_frequency">Database update frequency</string>
+    <string-array name="database_update_frequency_entries">
+        <item>4 hours</item>
+        <item>8 hours (Default)</item>
+        <item>12 hours</item>
+        <item>24 hours</item>
+        <item>48 hours</item>
+    </string-array>
+    <string-array name="database_update_frequency_values" translatable="false">
+        <item>4</item>
+        <item>8</item>
+        <item>12</item>
+        <item>24</item>
+        <item>48</item>
+    </string-array>
 
     <string name="parameters">Parameters</string>
 
     <string name="about">About</string>
     <string name="app_name_summary" translatable="false">Simon Hui \u00A9 2017</string>
-    <string name="app_version">App Version</string>
-    <string name="open_source_licenses">Open Source Licenses</string>
+    <string name="app_version">App version</string>
+    <string name="open_source_licenses">Open source licenses</string>
     <string name="open_source_licenses_summary">License details for open source software</string>
     <string name="open_source_licenses_path" translatable="false">file:///android_asset/licenses.html</string>
 
@@ -58,7 +93,7 @@
 
     <!-- Testing -->
     <string name="testing">Testing</string>
-    <string name="enabled_activities">Enabled Activities</string>
+    <string name="enabled_activities">Enabled activities</string>
     <string-array name="activities_entries">
         <item>@string/kmb_full</item>
         <item>@string/nwfb_full</item>
@@ -66,14 +101,14 @@
         <item>@string/ferry</item>
         <item>@string/mtr</item>
     </string-array>
-    <string-array name="activities_values">
+    <string-array name="activities_values" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
     </string-array>
-    <string-array name="activities_production_values">
+    <string-array name="activities_production_values" translatable="false">
         <item>3</item>
         <item>4</item>
         <item>5</item>

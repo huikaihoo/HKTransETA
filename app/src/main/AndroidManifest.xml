@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hoo.hktranseta">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
     <application
+        android:name=".common.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -77,6 +79,12 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <!-- KMB Activities -->
+        <activity
+            android:name=".main.kmb.KmbRouteActivity"
+            android:label="@string/kmb_full"
+            android:theme="@style/AppTheme.Kmb" />
 
         <!-- Other Activities -->
         <activity
