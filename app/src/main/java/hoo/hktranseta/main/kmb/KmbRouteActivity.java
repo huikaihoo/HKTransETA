@@ -1,5 +1,6 @@
 package hoo.hktranseta.main.kmb;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
+import hoo.hktranseta.common.Utils;
 import hoo.hktranseta.main.kmb.adapter.KmbRouteFragmentPagerAdapter;
 import hoo.hktranseta.main.kmb.model.db.KmbServiceType;
 import hoo.hktranseta.main.kmb.worker.KmbDataManager;
@@ -113,14 +115,25 @@ public class KmbRouteActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.activity_base, menu);
+        getMenuInflater().inflate(R.menu.activity_route, menu);
+        MenuItem menuItem = menu.findItem(R.id.menu_switch_to);
+        menuItem.setTitle(String.format(menuItem.getTitle().toString(), getResources().getString(R.string.nwfb_full)));
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        Intent intent;
         int id = item.getItemId();
+
         switch (id) {
+            case R.id.menu_open_website:
+                String url = Constants.Url.KMB_MOBILE + mKmbRouteNo;
+                Utils.startCustomTabs(this, url, R.color.colorKmb);
+                return true;
             case android.R.id.home:
                 onBackPressed();
                 return true;

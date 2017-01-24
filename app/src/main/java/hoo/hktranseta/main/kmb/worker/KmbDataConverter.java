@@ -3,6 +3,7 @@ package hoo.hktranseta.main.kmb.worker;
 import java.util.ArrayList;
 import java.util.List;
 
+import hoo.hktranseta.common.Utils;
 import hoo.hktranseta.main.kmb.model.db.KmbEta;
 import hoo.hktranseta.main.kmb.model.db.KmbRouteStop;
 import hoo.hktranseta.main.kmb.model.db.KmbServiceType;
@@ -14,12 +15,8 @@ public class KmbDataConverter {
 
     private static final String TAG = "KmbDataConverter";
 
-    private static long getCurrentTimestamp () {
-        return System.currentTimeMillis() / 1000L;
-    }
-
     public static List<KmbServiceType> toKmbServiceTypeList(SpecialRoute specialRoute) {
-        long timestamp = getCurrentTimestamp();
+        long timestamp = Utils.getCurrentTimestamp();
 
         List<KmbServiceType> result = new ArrayList<>();
         if (specialRoute.data != null){
@@ -32,7 +29,7 @@ public class KmbDataConverter {
     }
 
     public static List<KmbRouteStop> toKmbStopList(Stop stop) {
-        long timestamp = getCurrentTimestamp();
+        long timestamp = Utils.getCurrentTimestamp();
 
         List<KmbRouteStop> result = new ArrayList<>();
         if (stop.data != null){
@@ -45,7 +42,7 @@ public class KmbDataConverter {
     }
 
     public static List<KmbEta> toKmbEta(KmbRouteStop kmbRouteStop, Eta eta) {
-        long timestamp = getCurrentTimestamp();
+        long timestamp = Utils.getCurrentTimestamp();
 
         List<KmbEta> result = new ArrayList<>();
         if (eta.data != null) {

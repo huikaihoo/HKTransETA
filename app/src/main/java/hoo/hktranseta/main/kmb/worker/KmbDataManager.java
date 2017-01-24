@@ -17,6 +17,7 @@ import java.util.TreeSet;
 
 import hoo.hktranseta.common.BaseApplication;
 import hoo.hktranseta.common.Constants;
+import hoo.hktranseta.common.Utils;
 import hoo.hktranseta.common.worker.GreenDaoManager;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
 import hoo.hktranseta.main.kmb.model.db.DaoSession;
@@ -55,7 +56,7 @@ public class KmbDataManager {
 
     private static long getExpiryTimestamp() {
         SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
-        return System.currentTimeMillis() / 1000L
+        return Utils.getCurrentTimestamp()
                 - sharedPrefsManager.getInt(Constants.Prefs.DATABASE_UPDATE_FREQUENCY, 8) * 60 * 60;
     }
 

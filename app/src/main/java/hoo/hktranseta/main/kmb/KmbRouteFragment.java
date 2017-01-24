@@ -168,6 +168,7 @@ public class KmbRouteFragment extends BaseFragment {
             if (mCountDownFinishTime > 0 && mCountDownFinishTime < currentTime) {
                 mCountDownFinishTime = 0;
                 ((KmbRouteActivity)getActivity()).updateOnRefreshData();
+                return;
             }
             if (mCountDownFinishTime == 0) {
                 mCountDownFinishTime = currentTime + maxTime;

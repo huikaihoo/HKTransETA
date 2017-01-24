@@ -12,6 +12,7 @@ import android.webkit.WebViewClient;
 
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
+import hoo.hktranseta.common.Utils;
 
 public class WebViewActivity extends AppCompatActivity {
 
@@ -35,6 +36,15 @@ public class WebViewActivity extends AppCompatActivity {
         mWebView = (WebView) findViewById(R.id.webview);
 
         mWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (url.contains("http")) {
+                    Utils.startCustomTabs(WebViewActivity.this, url, R.color.colorSettings);
+                    return true;
+                }
+                return false;
+            }
+
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);

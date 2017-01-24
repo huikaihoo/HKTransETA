@@ -1,6 +1,5 @@
 package hoo.hktranseta.common;
 
-
 public class Constants {
 
     public static class AppMode {
@@ -70,6 +69,7 @@ public class Constants {
     public interface Url {
         String KMB_SEARCH = "http://search.kmb.hk/KMBWebSite/Function/FunctionRequest.ashx";
         String KMB_HEARERS_REFERER = "http://search.kmb.hk/KMBWebSite/index.aspx?lang=tc";
+        String KMB_MOBILE = "http://m.kmb.hk/tc/result.html?busno=";
     }
 
     public interface Connection {

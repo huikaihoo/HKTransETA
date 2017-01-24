@@ -23,16 +23,11 @@
     <string name="edit">Edit</string>
     <string name="add_shortcut">Add shortcut</string>
 
-    <!-- Common Strings -->
-    <string name="to">To\u0020</string>
-    <string name="loading">Loading...</string>
-    <string name="no_data">No data</string>
-    <string name="error_occur">Error occur</string>
-
-    <!-- Common Symbol -->
-    <string name="arrow_one_way" translatable="false">\u0020→\u0020</string>
-    <string name="arrow_two_ways" translatable="false">\u0020⇄\u0020</string>
-    <string name="arrow_circular" translatable="false">\u0020⟲\u0020</string>
+    <!-- Route Menu Items -->
+    <string name="maps">Maps</string>
+    <string name="switch_to">Switch to %1$s</string>
+    <string name="open_website">Open website</string>
+    <string name="force_update">Force update</string>
 
     <!-- KMB Bottom Menu Items -->
     <string name="timetable">Timetable</string>
@@ -42,6 +37,18 @@
 
     <!-- Settings Menu Items -->
     <string name="open_in_play_store">Open in Play Store</string>
+
+    <!-- Common -->
+    <!-- Common Strings -->
+    <string name="to">To\u0020</string>
+    <string name="loading">Loading &#8230;</string>
+    <string name="no_data">No data</string>
+    <string name="error_occur">Error occur</string>
+
+    <!-- Common Symbol -->
+    <string name="arrow_one_way" translatable="false">\u0020→\u0020</string>
+    <string name="arrow_two_ways" translatable="false">\u0020⇄\u0020</string>
+    <string name="arrow_circular" translatable="false">\u0020⟲\u0020</string>
 
     <!-- Settings -->
     <!-- General Settings -->

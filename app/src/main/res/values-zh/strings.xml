@@ -2,7 +2,7 @@
 <resources>
     <!-- Common Strings -->
     <string name="to">往\u0020</string>
-    <string name="loading">載入中...</string>
+    <string name="loading">載入中&#8230;</string>
     <string name="no_data">沒有資料</string>
     <string name="error_occur">發生錯誤</string>
 </resources>
