@@ -49,7 +49,12 @@ public class KmbServiceTypeSpinnerAdapter extends ArrayAdapter<KmbServiceType> {
                     directionArrow = BaseApplication.getContext().getResources().getString(R.string.arrow_one_way);
                 }
 
-                tvTitle.setText((position>0 ? "#" : "")
+                String specialIndicator = BaseApplication.getContext().getResources().getString(R.string.symbol_special_route);
+                if (position < 1 || !kmbServiceType.getBoundId().equals(getItem(position-1).getBoundId()) ) {
+                    specialIndicator = "";
+                }
+
+                tvTitle.setText(specialIndicator
                         + kmbServiceType.getLocationFrom() + directionArrow
                         + kmbServiceType.getLocationTo());
             }

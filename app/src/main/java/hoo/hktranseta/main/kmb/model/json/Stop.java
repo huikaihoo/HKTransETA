@@ -40,10 +40,10 @@ public class Stop {
         public String bsiCode;
 
         @SerializedName("X")
-        public double x;
+        public double x;        // HK1980 Grid Easting
 
         @SerializedName("Y")
-        public double y;
+        public double y;        // HK1980 Grid Northing
 
         @SerializedName("AirFare")
         public double airFare;

@@ -79,6 +79,18 @@ public class KmbDataManager {
         return result;
     }
 
+    public List<KmbServiceType> getServiceTypeList(String routeNo){
+        List<KmbServiceType> result = getServiceTypeListByDb(routeNo, getExpiryTimestamp());
+        if (result == null || result.size() == 0) {
+            getServiceTypeListByNet(routeNo);
+            result = getServiceTypeListByDb(routeNo, 0);
+        }
+        for (KmbServiceType kmbServiceType : result) {
+            getRouteStopList(kmbServiceType);
+        }
+        return result;
+    }
+
     public List<KmbServiceType> getServiceTypeList(String routeNo, int boundId){
         List<KmbServiceType> result = getServiceTypeListByDb(routeNo, boundId, getExpiryTimestamp());
         if (result == null || result.size() == 0) {
@@ -99,6 +111,17 @@ public class KmbDataManager {
                         KmbServiceTypeDao.Properties.ServiceTypeId.eq(1),
                         KmbServiceTypeDao.Properties.UpdateTimestamp.ge(expiryTimestamp))
                 .orderAsc(KmbServiceTypeDao.Properties.BoundId)
+                .list();
+    }
+
+    private List<KmbServiceType> getServiceTypeListByDb(String routeNo, long expiryTimestamp) {
+        KmbServiceTypeDao kmbServiceTypeDao = mDaoSession.getKmbServiceTypeDao();
+
+        return kmbServiceTypeDao.queryBuilder()
+                .where(KmbServiceTypeDao.Properties.RouteNo.eq(routeNo),
+                        KmbServiceTypeDao.Properties.UpdateTimestamp.ge(expiryTimestamp))
+                .orderAsc(KmbServiceTypeDao.Properties.BoundId,
+                        KmbServiceTypeDao.Properties.ServiceTypeId)
                 .list();
     }
 

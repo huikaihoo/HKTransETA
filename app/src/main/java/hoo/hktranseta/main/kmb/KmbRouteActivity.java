@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -46,9 +47,11 @@ public class KmbRouteActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
-    private String mKmbRouteNo;
+    private String mRouteNo;
     private Boolean mIsCircular = true;
     private List<KmbServiceType> mKmbServiceTypeList = new ArrayList<>();
+
+    private GetDefaultServiceTypeListAsyncTask mGetDefaultServiceTypeListAsyncTask;
 
     private BottomNavigationViewEx mBottomNavigationViewEx;
 
@@ -61,14 +64,15 @@ public class KmbRouteActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Get Activity based data
-        mKmbRouteNo = getIntent().getStringExtra(Constants.Extra.KMB_ROUTE_NO);
+        mRouteNo = getIntent().getStringExtra(Constants.Extra.KMB_ROUTE_NO);
         if (savedInstanceState != null) {
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
                 actionBar.setSubtitle(savedInstanceState.getString(Constants.Extra.ACTIONBAR_SUBTITLE));
             }
         }
-        AsyncTaskCompat.executeParallel(new GetDefaultServiceTypeList(), mKmbRouteNo);
+        resetAsyncTask(new GetDefaultServiceTypeListAsyncTask());
+        AsyncTaskCompat.executeParallel(mGetDefaultServiceTypeListAsyncTask);
 
         // Set up FragmentPagerAdapter
         mKmbRouteFragmentPagerAdapter = new KmbRouteFragmentPagerAdapter(
@@ -86,7 +90,7 @@ public class KmbRouteActivity extends AppCompatActivity {
         if (actionBar != null) {
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setTitle(mKmbRouteNo);
+            actionBar.setTitle(mRouteNo);
         }
 
         // Set up BottomNavigationViewEx
@@ -130,8 +134,13 @@ public class KmbRouteActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         switch (id) {
+            case R.id.menu_maps:
+                intent = new Intent(this, KmbMapsActivity.class);
+                intent.putExtra(Constants.Extra.KMB_ROUTE_NO, mRouteNo);
+                startActivity(intent);
+                return true;
             case R.id.menu_open_website:
-                String url = Constants.Url.KMB_MOBILE + mKmbRouteNo;
+                String url = Constants.Url.KMB_MOBILE + mRouteNo;
                 Utils.startCustomTabs(this, url, R.color.colorKmb);
                 return true;
             case android.R.id.home:
@@ -144,7 +153,7 @@ public class KmbRouteActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(Constants.Extra.KMB_ROUTE_NO, mKmbRouteNo);
+        outState.putString(Constants.Extra.KMB_ROUTE_NO, mRouteNo);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             CharSequence str = actionBar.getSubtitle();
@@ -154,6 +163,7 @@ public class KmbRouteActivity extends AppCompatActivity {
         if (mBottomNavigationViewEx != null) {
             outState.putInt(Constants.Extra.KMB_SELECTED_ITEM_POSITION, mBottomNavigationViewEx.getCurrentItem());
         }
+        resetAsyncTask(null);
     }
 
 //    @Override
@@ -162,7 +172,7 @@ public class KmbRouteActivity extends AppCompatActivity {
 //        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottom_nav);
 //        bottomNavigationViewEx.setCurrentItem(1);
 //        if (savedInstanceState != null) {
-//            mKmbRouteNo = savedInstanceState.getString(Constants.Extra.KMB_ROUTE_NO);
+//            mRouteNo = savedInstanceState.getString(Constants.Extra.KMB_ROUTE_NO);
 //            if (getS)
 //            getActionBar()savedInstanceState.getString(Constants.Extra.ACTIONBAR_SUBTITLE);
 //        }
@@ -183,11 +193,9 @@ public class KmbRouteActivity extends AppCompatActivity {
 
             if (mKmbServiceTypeList.size() >= 2) {
                 directionArrow = getString(R.string.arrow_two_ways);
-            }
-            else if (mIsCircular) {
+            } else if (mIsCircular) {
                 directionArrow = getString(R.string.arrow_circular);
-            }
-            else {
+            } else {
                 directionArrow = getString(R.string.arrow_one_way);
             }
 
@@ -201,12 +209,24 @@ public class KmbRouteActivity extends AppCompatActivity {
             mKmbRouteFragmentPagerAdapter.updateOnRefreshData();
     }
 
+    private void resetAsyncTask(@Nullable AsyncTask newAsyncTask) {
+        // Cancel all previous AsyncTask
+        if (mGetDefaultServiceTypeListAsyncTask != null) {
+            mGetDefaultServiceTypeListAsyncTask.cancel(true);
+        }
+
+        // Create new AsyncTask
+        if (newAsyncTask instanceof GetDefaultServiceTypeListAsyncTask) {
+            mGetDefaultServiceTypeListAsyncTask = (GetDefaultServiceTypeListAsyncTask) newAsyncTask;
+        }
+    }
+
     // AsyncTask to get DefaultServiceTypeList
-    private class GetDefaultServiceTypeList extends AsyncTask<String, Void, List<KmbServiceType>> {
+    private class GetDefaultServiceTypeListAsyncTask extends AsyncTask<Void, Void, List<KmbServiceType>> {
         @Override
-        protected List<KmbServiceType> doInBackground(String... routeId) {
+        protected List<KmbServiceType> doInBackground(Void... params) {
             KmbDataManager kmbDataManager = KmbDataManager.getInstance();
-            return kmbDataManager.getDefaultServiceTypeList(routeId[0]);
+            return kmbDataManager.getDefaultServiceTypeList(mRouteNo);
         }
 
         @Override
@@ -214,7 +234,6 @@ public class KmbRouteActivity extends AppCompatActivity {
             super.onPostExecute(result);
             mKmbServiceTypeList.clear();
             mKmbServiceTypeList.addAll(result);
-
             setActionBarSubtitle();
 
             Log.d(TAG, "mKmbServiceTypeList.size=[" + mKmbServiceTypeList.size() + "]");

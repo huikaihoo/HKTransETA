@@ -15,7 +15,7 @@
         android:id="@+id/menu_switch_to"
         android:title="@string/switch_to"
         android:orderInCategory="210"
-        android:icon="@drawable/ic_menu_switch_to"
+        android:icon="@drawable/ic_menu_switch"
         app:showAsAction="never" />
 
     <item
@@ -30,6 +30,7 @@
         android:title="@string/force_update"
         android:orderInCategory="230"
         android:icon="@drawable/ic_menu_force_update"
+        android:checkable="true"
         app:showAsAction="never" />
 
 </menu>

@@ -3,7 +3,16 @@
     package="hoo.hktranseta">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".common.BaseApplication"
@@ -13,6 +22,9 @@
         android:resizeableActivity="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
         <meta-data
             android:name="com.samsung.android.sdk.multiwindow.enable"
             android:value="true" />
@@ -83,8 +95,10 @@
         <!-- KMB Activities -->
         <activity
             android:name=".main.kmb.KmbRouteActivity"
-            android:label="@string/kmb_full"
             android:theme="@style/AppTheme.Kmb" />
+        <activity
+            android:name=".main.kmb.KmbMapsActivity"
+            android:theme="@style/AppTheme.Transparent" />
 
         <!-- Other Activities -->
         <activity
@@ -94,6 +108,11 @@
         <activity
             android:name=".main.WebViewActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".main.StreetViewActivity"
+            android:theme="@style/AppTheme.Transparent">
+        </activity>
+
     </application>
 
 </manifest>

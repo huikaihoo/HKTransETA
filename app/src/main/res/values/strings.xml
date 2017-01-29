@@ -49,6 +49,7 @@
     <string name="arrow_one_way" translatable="false">\u0020→\u0020</string>
     <string name="arrow_two_ways" translatable="false">\u0020⇄\u0020</string>
     <string name="arrow_circular" translatable="false">\u0020⟲\u0020</string>
+    <string name="symbol_special_route" translatable="false">#</string>
 
     <!-- Settings -->
     <!-- General Settings -->
@@ -85,6 +86,10 @@
         <item>24</item>
         <item>48</item>
     </string-array>
+    <string name="clear_route_data">Clear route data</string>
+    <string name="clear_route_data_summary">Remove route data from this device</string>
+    <string name="clear_followed_list">Clear followed list</string>
+    <string name="clear_followed_list_summary">Remove followed list from this device</string>
 
     <string name="parameters">Parameters</string>
 
@@ -195,5 +200,6 @@
     <string name="title_activity_base_tabbed">BaseTabbedActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_base">BaseActivity</string>
+    <string name="title_activity_maps">Maps</string>
 
 </resources>

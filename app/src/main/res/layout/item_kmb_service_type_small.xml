@@ -14,7 +14,6 @@
     <TextView
         android:id="@+id/title"
         android:textColor="@color/colorMenuWhite"
-        style="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
@@ -26,6 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:maxLines="2" />
+        android:maxLines="1" />
 
 </RelativeLayout>

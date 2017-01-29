@@ -1,5 +1,9 @@
 package hoo.hktranseta.main.kmb.model.db;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -13,6 +17,7 @@ import org.greenrobot.greendao.annotation.Transient;
 
 import java.util.List;
 
+import hoo.hktranseta.common.Utils;
 import hoo.hktranseta.main.kmb.model.json.Stop;
 
 @Entity(
@@ -71,6 +76,15 @@ public class KmbRouteStop {
     @OrderBy("routeNo ASC, boundId ASC, serviceTypeId ASC, seq ASC, etaId ASC")
     public List<KmbEta> kmbEtaList;
 
+    // Self define functions start
+    public MarkerOptions getMarkerOptions(String stopNamePrefix, float markerColor) {
+        return new MarkerOptions()
+                .position(new LatLng(stopLat, stopLong))
+                .title(stopNamePrefix + stopName)
+                .icon(BitmapDescriptorFactory.defaultMarker(markerColor));
+    }
+    // Self define functions end
+
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
@@ -85,8 +99,9 @@ public class KmbRouteStop {
         serviceTypeId = routeStop.serviceType;
         seq = routeStop.seq;
         stopId = routeStop.bsiCode;
-        stopLat = routeStop.x;
-        stopLong = routeStop.y;
+        LatLng latLng = Utils.hk1980GridToLatLng(routeStop.y, routeStop.x);
+        stopLat = latLng.latitude;
+        stopLong = latLng.longitude;
         fare = routeStop.airFare;
         stopName = routeStop.cName;
         stopNameEN = routeStop.eName;

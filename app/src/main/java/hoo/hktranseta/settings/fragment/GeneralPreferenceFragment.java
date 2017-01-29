@@ -11,6 +11,7 @@ import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.fragment.BasePreferenceFragment;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
+import hoo.hktranseta.main.kmb.worker.KmbDataManager;
 
 import static junit.framework.Assert.assertNotNull;
 
@@ -36,6 +37,19 @@ public class GeneralPreferenceFragment extends BasePreferenceFragment {
         bindPreferenceSummaryToValue(findPreference(Constants.Prefs.DATABASE_UPDATE_FREQUENCY));
         bindPreferenceSummaryToValue(findPreference(Constants.Prefs.ETA_UPDATE_FREQUENCY));
         bindPreferenceSummaryToValue(findPreference(Constants.Prefs.PARAMETERS));
+
+        // Clear Route Data Preference
+        Preference clearRouteDataPreference = findPreference(Constants.Prefs.CLEAR_ROUTE_DATA);
+
+        clearRouteDataPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                // TODO: Add conform dialog
+                KmbDataManager kmbDataManager = KmbDataManager.getInstance();
+                kmbDataManager.clearAllDbData();
+                return true;
+            }
+        });
 
         // Testing PreferenceCategory
         mTestingPreferenceCategory = (PreferenceCategory) findPreference(Constants.Prefs.TESTING);

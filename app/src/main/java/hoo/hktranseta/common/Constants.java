@@ -32,6 +32,9 @@ public class Constants {
         int MTR = 5;
     }
 
+    public interface Permission{
+        int PERMISSIONS_REQUEST_LOCATION = 1;
+    }
     // Share Preferences Key
     public interface Prefs {
         String START_ACTIVITY = "start_activity";
@@ -39,6 +42,8 @@ public class Constants {
         // GeneralPreferenceFragment
         String ETA_UPDATE_FREQUENCY = "eta_update_frequency";
         String DATABASE_UPDATE_FREQUENCY = "database_update_frequency";
+        String CLEAR_ROUTE_DATA = "clear_route_data";
+        String CLEAR_FOLLOWED_LIST = "clear_followed_list";
         String TESTING = "testing";
         String PARAMETERS = "parameters";
         String APP_VERSION = "app_version";
@@ -51,8 +56,13 @@ public class Constants {
         String URL = "url";
 
         // Common
+        String ACTIONBAR_TITLE = "actionbar_title";
         String ACTIONBAR_SUBTITLE = "actionbar_subtitle";
         String COUNTDOWN_FINISH_TIME = "countdown_finish_time";
+
+        // StreetViewActivity
+        String LATITUDE = "latitude";
+        String LONGITUDE = "longitude";
 
         // KmbRouteFragment
         String KMB_ROUTE_NO = "kmb_route_no";
