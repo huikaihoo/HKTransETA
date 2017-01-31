@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/colorSettings</color>
-    <color name="colorPrimaryDark">@color/colorSettingsDark</color>
-    <color name="colorAccent">@color/colorSettingsAccent</color>
+    <color name="colorPrimary">@color/colorDefault</color>
+    <color name="colorPrimaryDark">@color/colorDefaultDark</color>
+    <color name="colorAccent">@color/colorDefaultAccent</color>
 
     <color name="colorBlack">#000000</color>
     <color name="colorGreyBackground">#212121</color>
@@ -16,6 +16,10 @@
     <color name="colorItemWhite">#4FFFFFFF</color>
 
     <color name="colorSemiTransparentBlack">#59000000</color>
+
+    <color name="colorDefault">#03A9F4</color>
+    <color name="colorDefaultDark">#0288D1</color>
+    <color name="colorDefaultAccent">#03A9F4</color>
 
     <color name="colorKmb">#F44336</color>
     <color name="colorKmbDark">#D32F2F</color>
@@ -39,6 +43,7 @@
 
     <color name="colorSettings">#1B1B1B</color>
     <color name="colorSettingsDark">#000000</color>
-    <color name="colorSettingsAccent">#00BCD4</color>
+    <color name="colorSettingsAccent">@color/colorDefaultAccent</color>
+    <color name="colorSettingsAccent1">#00BCD4</color>
     <color name="colorSettingsAccent2">#FFE0B2</color>
 </resources>

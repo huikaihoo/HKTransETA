@@ -4,6 +4,14 @@
         android:id="@+id/nav_group_main"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_followed"
+            android:icon="@drawable/ic_nav_followed"
+            android:title="@string/followed_stops" />
+    </group>
+    <group
+        android:id="@+id/nav_group_full_list"
+        android:checkableBehavior="single">
+        <item
             android:id="@+id/nav_kmb"
             android:icon="@drawable/ic_nav_kmb"
             android:title="@string/kmb_full" />

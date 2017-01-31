@@ -35,7 +35,7 @@ public class KmbServiceTypeSpinnerAdapter extends ArrayAdapter<KmbServiceType> {
 
         if (kmbServiceType != null) {
             TextView tvTitle = (TextView) convertView.findViewById(R.id.title);
-            TextView tvDesc = (TextView) convertView.findViewById(R.id.desc);
+            TextView tvDescBottom = (TextView) convertView.findViewById(R.id.desc_bottom);
 
             if (tvTitle != null) {
                 String directionArrow;
@@ -59,8 +59,8 @@ public class KmbServiceTypeSpinnerAdapter extends ArrayAdapter<KmbServiceType> {
                         + kmbServiceType.getLocationTo());
             }
 
-            if (tvDesc != null) {
-                tvDesc.setText(kmbServiceType.getDesc());
+            if (tvDescBottom != null) {
+                tvDescBottom.setText(kmbServiceType.getDesc());
             }
         }
 

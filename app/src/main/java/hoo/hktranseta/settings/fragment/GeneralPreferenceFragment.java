@@ -1,16 +1,19 @@
 package hoo.hktranseta.settings.fragment;
 
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.support.v7.app.AlertDialog;
 
 import hoo.hktranseta.BuildConfig;
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.fragment.BasePreferenceFragment;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
+import hoo.hktranseta.main.gov.worker.GovDataManager;
 import hoo.hktranseta.main.kmb.worker.KmbDataManager;
 
 import static junit.framework.Assert.assertNotNull;
@@ -44,9 +47,19 @@ public class GeneralPreferenceFragment extends BasePreferenceFragment {
         clearRouteDataPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                // TODO: Add conform dialog
-                KmbDataManager kmbDataManager = KmbDataManager.getInstance();
-                kmbDataManager.clearAllDbData();
+                new AlertDialog.Builder(getActivity(), R.style.AppTheme_Dialog)
+                        .setTitle(R.string.clear_followed_stops_conform_msg)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                GovDataManager govDataManager = GovDataManager.getInstance();
+                                govDataManager.clearAllDbData();
+                                KmbDataManager kmbDataManager = KmbDataManager.getInstance();
+                                kmbDataManager.clearAllDbData();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show();
                 return true;
             }
         });

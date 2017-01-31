@@ -1,7 +1,5 @@
 package hoo.hktranseta.main.kmb.model.db;
 
-import android.util.Log;
-
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
@@ -14,6 +12,7 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
 
+import hoo.hktranseta.main.gov.model.DaoSession;
 import hoo.hktranseta.main.kmb.model.json.SpecialRoute;
 
 @Entity(
@@ -86,7 +85,6 @@ private transient KmbServiceTypeDao myDao;
         holidayStartTm = route.fromHoliday;
         holidayEndTm = route.toHoliday;
         this.updateTimestamp = updateTimestamp;
-        Log.d("SpecialRoute", routeNo + "-" + serviceTypeId + "<" + route.serviceType + "<");
     }
 
 @Generated(hash = 800307803)

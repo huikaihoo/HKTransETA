@@ -9,7 +9,7 @@ import hoo.hktranseta.common.activity.MainActivity;
 
 public class TramActivity extends MainActivity {
 
-    public TramActivity () {
+    public TramActivity() {
         super();
         mChildClass = getClass();
     }

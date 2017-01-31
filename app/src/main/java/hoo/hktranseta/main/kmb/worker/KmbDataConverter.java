@@ -45,7 +45,7 @@ public class KmbDataConverter {
         long timestamp = Utils.getCurrentTimestamp();
 
         List<KmbEta> result = new ArrayList<>();
-        if (eta.data != null) {
+        if (eta.data != null && eta.data.response != null) {
             for (int i=0; i <eta.data.response.size(); i++) {
                 KmbEta kmbEta = new KmbEta(kmbRouteStop, eta, i, timestamp);
                 result.add(kmbEta);

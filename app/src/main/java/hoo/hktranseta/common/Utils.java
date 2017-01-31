@@ -1,13 +1,21 @@
 package hoo.hktranseta.common;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.ColorRes;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MotionEventCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import hoo.hktranseta.common.customtabs.CustomTabsHelper;
 
@@ -117,5 +125,31 @@ public class Utils {
         longitude += (8.8/3600.0);
 
         return new LatLng(latitude, longitude);
+    }
+
+    /**
+     * Method to get key for MTR Next Train API
+     * @param routeId MTR route ID
+     * @param stationId MTR station ID
+     * @return key
+     */
+    @SuppressLint("SimpleDateFormat")
+    public static String getMtrKey(String routeId, String stationId) {
+        String lang = "zh";     // "zh" or "en"
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String secret_key = "c90vfabc";
+
+        String param = routeId + "|" + stationId + "|" + lang + "|" + date + "|" + secret_key;
+
+        StringBuilder sb = new StringBuilder();
+        try {
+            for (byte aResult : MessageDigest.getInstance("SHA1").digest(param.getBytes())) {
+                sb.append(Integer.toString((aResult & MotionEventCompat.ACTION_MASK) + AccessibilityNodeInfoCompat.ACTION_NEXT_AT_MOVEMENT_GRANULARITY, 16).substring(1));
+            }
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        return sb.toString();
     }
 }

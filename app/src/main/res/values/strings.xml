@@ -6,6 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Code Title -->
+    <string name="followed_stops">Followed Stops</string>
     <string name="kmb_full">KMB/LWB</string>
     <string name="kmb_short">KMB</string>
     <string name="nwfb_full">NWFB/CTB</string>
@@ -50,6 +51,14 @@
     <string name="arrow_two_ways" translatable="false">\u0020⇄\u0020</string>
     <string name="arrow_circular" translatable="false">\u0020⟲\u0020</string>
     <string name="symbol_special_route" translatable="false">#</string>
+    
+    <!-- Route Desc -->
+    <string name="overnight">overnight</string>
+    <string name="airport">airport</string>
+    <string name="cross_harbor">cross harbor</string>
+    <string name="special">special</string>
+    <string name="line_zh_only"></string>
+    <string name="space_en_only">\u0020</string>
 
     <!-- Settings -->
     <!-- General Settings -->
@@ -88,8 +97,10 @@
     </string-array>
     <string name="clear_route_data">Clear route data</string>
     <string name="clear_route_data_summary">Remove route data from this device</string>
-    <string name="clear_followed_list">Clear followed list</string>
-    <string name="clear_followed_list_summary">Remove followed list from this device</string>
+    <string name="clear_route_data_conform_msg">Are you sure to to remove all route data?</string>
+    <string name="clear_followed_stops">Clear followed stops</string>
+    <string name="clear_followed_stops_summary">Remove followed stops from this device</string>
+    <string name="clear_followed_stops_conform_msg">Are you sure to to remove all followed stops?</string>
 
     <string name="parameters">Parameters</string>
 

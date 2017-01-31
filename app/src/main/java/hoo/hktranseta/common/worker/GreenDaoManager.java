@@ -2,8 +2,8 @@ package hoo.hktranseta.common.worker;
 
 import hoo.hktranseta.common.BaseApplication;
 import hoo.hktranseta.common.Constants;
-import hoo.hktranseta.main.kmb.model.db.DaoMaster;
-import hoo.hktranseta.main.kmb.model.db.DaoSession;
+import hoo.hktranseta.main.gov.model.DaoMaster;
+import hoo.hktranseta.main.gov.model.DaoSession;
 
 public class GreenDaoManager {
 

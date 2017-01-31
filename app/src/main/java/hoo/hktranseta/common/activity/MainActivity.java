@@ -3,30 +3,26 @@ package hoo.hktranseta.common.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
+import hoo.hktranseta.common.view.FabOnVisibilityChangedListener;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
 import hoo.hktranseta.main.ferry.FerryActivity;
+import hoo.hktranseta.main.followed.FollowedActivity;
 import hoo.hktranseta.main.kmb.KmbActivity;
 import hoo.hktranseta.main.mtr.MtrActivity;
 import hoo.hktranseta.main.nwfb.NwfbActivity;
@@ -34,58 +30,61 @@ import hoo.hktranseta.main.tram.TramActivity;
 import hoo.hktranseta.settings.SettingsActivity;
 import hoo.hktranseta.settings.fragment.GeneralPreferenceFragment;
 
-import static junit.framework.Assert.assertNotNull;
-
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
-
     protected Class<?> mChildClass;
+
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
+    protected AppBarLayout mAppBarLayout;
+    protected FloatingActionButton mFab;
+    protected MenuItem mSearchMenuItem;
+    protected SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        // Set up SwipeRefreshLayout
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        //tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        mAppBarLayout = (AppBarLayout)findViewById(R.id.appbar);
 
         // Set up Floating Action Button
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Base Code", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if (mSearchMenuItem != null && mSearchView != null) {
+                    //Snackbar.make(view, "Base Code", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    mAppBarLayout.setExpanded(true, true);
+                    mSearchMenuItem.expandActionView();
+                    mSearchView.requestFocus();
+                }
             }
         });
 
         // Set up Navigation Drawer
+        setupNavigationDrawer();
+
+        // Remember the current Activity
+        if (mChildClass != null) {
+            SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
+            sharedPrefsManager.setString(Constants.Prefs.START_ACTIVITY, mChildClass.getName());
+        }
+    }
+
+    protected void setupNavigationDrawer() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -109,27 +108,38 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
-
-        // Remember the current Activity
-        assertNotNull(mChildClass);
-        SharedPrefsManager sharedPrefsManager = SharedPrefsManager.getInstance();
-        sharedPrefsManager.setString(Constants.Prefs.START_ACTIVITY, mChildClass.getName());
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.activity_base, menu);
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+
+        // Set up SearchMenuItem
+        mSearchMenuItem = menu.findItem(R.id.action_search);
+
+        if (mSearchMenuItem != null) {
+            mSearchView = (SearchView) MenuItemCompat.getActionView(mSearchMenuItem);
+
+            mSearchMenuItem.setVisible(false);
+            MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, new MenuItemCompat.OnActionExpandListener() {
+                @Override
+                public boolean onMenuItemActionExpand(MenuItem menuItem) {
+                    if (mFab != null) {
+                        mFab.hide(new FabOnVisibilityChangedListener());
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean onMenuItemActionCollapse(MenuItem menuItem) {
+                    if (mFab != null) {
+                        mFab.show();
+                    }
+                    return true;
+                }
+            });
+        }
         return true;
     }
 
@@ -141,14 +151,7 @@ public class MainActivity extends BaseActivity
         Intent intent;
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         switch (id) {
-            case R.id.menu_refresh:
-                return true;
-            case R.id.menu_route_list:
-                return true;
-            case R.id.menu_edit:
-                return true;
             case R.id.menu_add_shortcut:
                 return true;
             case R.id.action_settings:
@@ -162,7 +165,16 @@ public class MainActivity extends BaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -170,6 +182,12 @@ public class MainActivity extends BaseActivity
         int id = item.getItemId();
 
         switch (id) {
+            case R.id.nav_followed:
+                intent = new Intent(this, FollowedActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+                break;
             case R.id.nav_kmb:
                 intent = new Intent(this, KmbActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -214,108 +232,5 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private SwipeRefreshLayout mSwipeRefreshLayout;
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_base, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-
-            mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
-            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    mSwipeRefreshLayout.setRefreshing(false);
-                }
-            });
-
-
-//            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
-//            {
-//                @Override
-//                public void onScrolled(RecyclerView recyclerView, int dx, int dy)
-//                {
-//                    if (dy > 0 ||dy<0 && fab.isShown())
-//                    {
-//                        fab.hide();
-//                    }
-//                }
-//                @Override
-//                public void onScrollStateChanged(RecyclerView recyclerView, int newState)
-//                {
-//                    if (newState == RecyclerView.SCROLL_STATE_IDLE)
-//                    {
-//                        fab.show();
-//                    }
-//                    super.onScrollStateChanged(recyclerView, newState);
-//                }
-//            });
-            return rootView;
-        }
-    }
-
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-        public SectionsPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
-        }
-
-        @Override
-        public int getCount() {
-            // Show 3 total pages.
-            return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "SECTION 1";
-                case 1:
-                    return "SECTION 2";
-                case 2:
-                    return "SECTION 3";
-            }
-            return null;
-        }
     }
 }

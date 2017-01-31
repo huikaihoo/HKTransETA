@@ -32,6 +32,18 @@ public class Constants {
         int MTR = 5;
     }
 
+    public interface BusRouteType {
+        String KMB = "KMB";
+        String LWB = "LWB";
+        String NWFB = "NWFB";
+        String CTB = "CTB";
+        String NLB = "NLB";
+        String GMB = "GMB";
+        String MTRB = "LRTFeeder";
+        String DB = "DB";
+        String PI = "PI";
+    }
+
     public interface Permission{
         int PERMISSIONS_REQUEST_LOCATION = 1;
     }
@@ -43,7 +55,7 @@ public class Constants {
         String ETA_UPDATE_FREQUENCY = "eta_update_frequency";
         String DATABASE_UPDATE_FREQUENCY = "database_update_frequency";
         String CLEAR_ROUTE_DATA = "clear_route_data";
-        String CLEAR_FOLLOWED_LIST = "clear_followed_list";
+        String CLEAR_FOLLOWED_STOPS = "clear_followed_stops";
         String TESTING = "testing";
         String PARAMETERS = "parameters";
         String APP_VERSION = "app_version";
@@ -59,6 +71,9 @@ public class Constants {
         String ACTIONBAR_TITLE = "actionbar_title";
         String ACTIONBAR_SUBTITLE = "actionbar_subtitle";
         String COUNTDOWN_FINISH_TIME = "countdown_finish_time";
+        String QUERY_STRING = "query_string";
+        String SEARCH_VIEW_HAS_FOCUS = "search_view_has_focus";
+        String RECYCLER_LAYOUT = "recycler_layout";
 
         // StreetViewActivity
         String LATITUDE = "latitude";
@@ -77,6 +92,8 @@ public class Constants {
     }
 
     public interface Url {
+        String GOV_SEARCH = "http://app1.hketransport.td.gov.hk/et/getrouteinfo4.php";
+
         String KMB_SEARCH = "http://search.kmb.hk/KMBWebSite/Function/FunctionRequest.ashx";
         String KMB_HEARERS_REFERER = "http://search.kmb.hk/KMBWebSite/index.aspx?lang=tc";
         String KMB_MOBILE = "http://m.kmb.hk/tc/result.html?busno=";
@@ -101,6 +118,18 @@ public class Constants {
         int SUCCESS = 2;
         int ERROR = 3;
         int NODATA = 4;
+    }
+
+    public interface Gov {
+        // Search Query Key
+        String ROUTE_NAME = "route_name";
+        String COMPANY_INDEX = "company_index";
+        String LANG = "lang";
+        String SYSCODE = "syscode";
+
+        // Search Query Value
+        String COMPANY_INDEX_ALL_0 = "0";
+        String LANG_TC = "TC";
     }
 
     public interface Kmb {

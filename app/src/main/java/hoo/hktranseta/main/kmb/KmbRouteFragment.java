@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.os.AsyncTaskCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -79,7 +80,7 @@ public class KmbRouteFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_kmb_route, container, false);
+        View rootView = inflater.inflate(R.layout.swipe_refresh_recycler_view, container, false);
         Log.d(TAG, "onCreateView");
 
         // Set up SwipeRefreshLayout
@@ -115,6 +116,8 @@ public class KmbRouteFragment extends BaseFragment {
             mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),
+                    ((LinearLayoutManager)mRecyclerView.getLayoutManager()).getOrientation()));
 
             // Get recyclerView adapter data
             if (mSelectedItemId == 0)

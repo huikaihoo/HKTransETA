@@ -26,9 +26,9 @@
             android:persistent="false" />
 
         <Preference
-            android:key="clear_followed_list"
-            android:title="@string/clear_followed_list"
-            android:summary="@string/clear_followed_list_summary"
+            android:key="clear_followed_stops"
+            android:title="@string/clear_followed_stops"
+            android:summary="@string/clear_followed_stops_summary"
             android:persistent="false" />
 
     </PreferenceCategory>

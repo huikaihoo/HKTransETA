@@ -20,7 +20,7 @@ import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.Utils;
 import hoo.hktranseta.common.worker.GreenDaoManager;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
-import hoo.hktranseta.main.kmb.model.db.DaoSession;
+import hoo.hktranseta.main.gov.model.DaoSession;
 import hoo.hktranseta.main.kmb.model.db.KmbEtaDao;
 import hoo.hktranseta.main.kmb.model.db.KmbRouteStop;
 import hoo.hktranseta.main.kmb.model.db.KmbRouteStopDao;
@@ -505,7 +505,7 @@ public class KmbDataManager {
                 kmbEtaDao.insertOrReplaceInTx(KmbDataConverter.toKmbEta(kmbRouteStop, eta));
                 kmbRouteStop.resetKmbEtaList();
 
-                if (eta.data == null || eta.data.response.size() <= 0) {
+                if (eta.data == null || eta.data.response == null || eta.data.response.size() <= 0) {
                     kmbRouteStop.etaStatus = Constants.Eta.NODATA;
                 } else {
                     kmbRouteStop.etaStatus = Constants.Eta.SUCCESS;

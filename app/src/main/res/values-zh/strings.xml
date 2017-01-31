@@ -5,4 +5,12 @@
     <string name="loading">載入中&#8230;</string>
     <string name="no_data">沒有資料</string>
     <string name="error_occur">發生錯誤</string>
+
+    <!-- Route Desc -->
+    <string name="overnight">通宵</string>
+    <string name="airport">機場</string>
+    <string name="cross_harbor">過海</string>
+    <string name="special">特別</string>
+    <string name="line_zh_only">線</string>
+    <string name="space_en_only"></string>
 </resources>

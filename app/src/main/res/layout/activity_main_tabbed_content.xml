@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="hoo.hktranseta.common.activity.MainActivity">
+    tools:context="hoo.hktranseta.common.activity.MainTabbedActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -60,6 +60,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_fab_search"
-        app:layout_behavior="hoo.hktranseta.common.view.FloatingActionButtonBehavior" />
+        app:layout_behavior="hoo.hktranseta.common.view.FabBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

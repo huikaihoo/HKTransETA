@@ -15,24 +15,18 @@
         app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item
-        android:id="@+id/menu_refresh"
-        android:title="@string/refresh"
-        android:orderInCategory="110"
-        android:icon="@drawable/ic_menu_refresh"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/menu_route_list"
-        android:title="@string/route_list"
-        android:orderInCategory="120"
-        android:icon="@drawable/ic_menu_route_list"
-        app:showAsAction="ifRoom" />
-
-    <item
         android:id="@+id/menu_edit"
         android:title="@string/edit"
-        android:orderInCategory="210"
+        android:orderInCategory="110"
         android:icon="@drawable/ic_menu_edit"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_force_update"
+        android:title="@string/force_update"
+        android:orderInCategory="210"
+        android:icon="@drawable/ic_menu_force_update"
+        android:checkable="true"
         app:showAsAction="never" />
 
     <item

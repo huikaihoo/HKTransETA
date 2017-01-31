@@ -9,7 +9,7 @@ import hoo.hktranseta.common.activity.MainActivity;
 
 public class NwfbActivity extends MainActivity {
 
-    public NwfbActivity () {
+    public NwfbActivity() {
         super();
         mChildClass = getClass();
     }

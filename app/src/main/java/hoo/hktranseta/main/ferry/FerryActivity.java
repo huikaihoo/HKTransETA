@@ -9,7 +9,7 @@ import hoo.hktranseta.common.activity.MainActivity;
 
 public class FerryActivity extends MainActivity {
 
-    public FerryActivity () {
+    public FerryActivity() {
         super();
         mChildClass = getClass();
     }

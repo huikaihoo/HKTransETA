@@ -18,6 +18,7 @@ import org.greenrobot.greendao.annotation.Transient;
 import java.util.List;
 
 import hoo.hktranseta.common.Utils;
+import hoo.hktranseta.main.gov.model.DaoSession;
 import hoo.hktranseta.main.kmb.model.json.Stop;
 
 @Entity(

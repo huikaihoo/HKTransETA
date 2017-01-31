@@ -18,6 +18,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat" />
 
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <!-- App Theme (Transparent) -->
     <style name="AppTheme.Transparent" parent="Theme.AppCompat">
         <item name="colorPrimary">@android:color/transparent</item>
@@ -61,6 +65,13 @@
         <item name="colorPrimary">@color/colorMtr</item>
         <item name="colorPrimaryDark">@color/colorMtrDark</item>
         <item name="colorAccent">@color/colorMtrAccent</item>
+    </style>
+
+    <!-- App Theme (Settings) -->
+    <style name="AppTheme.Dark" parent="AppTheme">
+        <item name="colorPrimary">@color/colorSettings</item>
+        <item name="colorPrimaryDark">@color/colorSettingsDark</item>
+        <item name="colorAccent">@color/colorSettingsAccent</item>
     </style>
 
 </resources>

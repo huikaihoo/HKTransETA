@@ -56,6 +56,6 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|right"
         app:menu="@menu/activity_kmb_bottom"
-        app:layout_behavior="hoo.hktranseta.common.view.BottomNavigationViewBehavior" />
+        app:layout_behavior="hoo.hktranseta.common.view.BnvBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

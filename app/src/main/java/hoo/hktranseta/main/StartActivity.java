@@ -6,6 +6,7 @@ import android.os.Bundle;
 import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.activity.BaseActivity;
 import hoo.hktranseta.common.worker.SharedPrefsManager;
+import hoo.hktranseta.main.followed.FollowedActivity;
 import hoo.hktranseta.main.mtr.MtrActivity;
 
 public class StartActivity extends BaseActivity {
@@ -21,7 +22,7 @@ public class StartActivity extends BaseActivity {
             activityClass = Class.forName(sharedPrefsManager.getString(
                     Constants.Prefs.START_ACTIVITY, MtrActivity.class.getName()));
         } catch(ClassNotFoundException ex) {
-            activityClass = MtrActivity.class;
+            activityClass = FollowedActivity.class;
         }
 
         startActivity(new Intent(this, activityClass));

@@ -7,13 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <application
         android:name=".common.BaseApplication"
         android:allowBackup="true"
@@ -51,6 +44,14 @@
         </activity>
 
         <!-- Main Activities -->
+        <activity
+            android:name=".main.followed.FollowedActivity"
+            android:label="@string/followed_stops"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".main.kmb.KmbActivity"
             android:label="@string/kmb_full"
@@ -104,10 +105,10 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/settings"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".main.WebViewActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.Dark" />
         <activity
             android:name=".main.StreetViewActivity"
             android:theme="@style/AppTheme.Transparent">

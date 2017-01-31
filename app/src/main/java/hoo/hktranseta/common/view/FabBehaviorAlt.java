@@ -5,14 +5,14 @@ import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wingsofts.byeburgernavigationview.ByeBurgerBottomBehavior;
+import com.wingsofts.byeburgernavigationview.ByeBurgerFloatButtonBehavior;
 import com.wingsofts.byeburgernavigationview.TranslateAnimateHelper;
 
-public class BottomNavigationViewBehavior extends ByeBurgerBottomBehavior {
+public class FabBehaviorAlt extends ByeBurgerFloatButtonBehavior {
 
     private static final int dyIgnore = 1;
 
-    public BottomNavigationViewBehavior(Context context, AttributeSet attrs) {
+    public FabBehaviorAlt(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
