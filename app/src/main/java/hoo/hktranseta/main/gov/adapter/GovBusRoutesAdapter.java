@@ -9,6 +9,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,7 @@ import hoo.hktranseta.main.kmb.KmbActivity;
 
 
 public class GovBusRoutesAdapter extends RecyclerView.Adapter<GovBusRoutesAdapter.MyViewHolder>
-        implements Filterable {
+        implements Filterable, FastScrollRecyclerView.SectionedAdapter {
 
     private static final String TAG = "GovBusRoutesAdapter";
 
@@ -113,28 +115,21 @@ public class GovBusRoutesAdapter extends RecyclerView.Adapter<GovBusRoutesAdapte
         protected FilterResults performFiltering(CharSequence constraint) {
             FilterResults results = new FilterResults();
 
-            Log.d(TAG, "1govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
             govBusRouteFilteredList.clear();
-            Log.d(TAG, "2govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
 
             if (constraint.length() == 0) {
-                Log.d(TAG, "3govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
                 govBusRouteFilteredList.addAll(govBusRouteFullList);
-                Log.d(TAG, "4govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
             } else {
-                Log.d(TAG, "5govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (GovBusRoute govBusRoute : govBusRouteFullList) {
                     if (govBusRoute.getRouteNo().toLowerCase().contains(filterPattern)) {
                         govBusRouteFilteredList.add(govBusRoute);
                     }
                 }
-                Log.d(TAG, "6govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
             }
 
             results.values = govBusRouteFilteredList;
             results.count = govBusRouteFilteredList.size();
-            Log.d(TAG, "7govBusRouteFilteredList.size()" + govBusRouteFilteredList.size());
             return results;
         }
 
@@ -143,6 +138,12 @@ public class GovBusRoutesAdapter extends RecyclerView.Adapter<GovBusRoutesAdapte
             Log.d(TAG, "publishResults");
             notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public String getSectionName(int position) {
+        return govBusRouteFilteredList.get(position).getRouteNo();
+        //return govBusRouteFilteredList.get(position).getSectionName();
     }
 
     @Override

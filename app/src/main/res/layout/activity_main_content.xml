@@ -24,7 +24,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <include
-        layout="@layout/swipe_refresh_recycler_view"
+        layout="@layout/swipe_refresh_fast_scroll_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

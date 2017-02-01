@@ -112,9 +112,13 @@ public class KmbActivity extends MainActivity implements SearchView.OnQueryTextL
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(Constants.Extra.QUERY_STRING, mSearchView.getQuery().toString());
-        outState.putBoolean(Constants.Extra.SEARCH_VIEW_HAS_FOCUS, mSearchView.hasFocus());
-        outState.putParcelable(Constants.Extra.RECYCLER_LAYOUT, mRecyclerView.getLayoutManager().onSaveInstanceState());
+        if (mSearchView != null) {
+            outState.putString(Constants.Extra.QUERY_STRING, mSearchView.getQuery().toString());
+            outState.putBoolean(Constants.Extra.SEARCH_VIEW_HAS_FOCUS, mSearchView.hasFocus());
+        }
+        if (mRecyclerView != null){
+            outState.putParcelable(Constants.Extra.RECYCLER_LAYOUT, mRecyclerView.getLayoutManager().onSaveInstanceState());
+        }
         resetAsyncTask(null);
     }
 

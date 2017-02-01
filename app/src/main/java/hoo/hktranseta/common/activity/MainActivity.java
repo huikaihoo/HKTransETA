@@ -17,6 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.simplecityapps.recyclerview_fastscroll.interfaces.OnFastScrollStateChangeListener;
+import com.simplecityapps.recyclerview_fastscroll.views.FastScrollRecyclerView;
+
 import hoo.hktranseta.R;
 import hoo.hktranseta.common.Constants;
 import hoo.hktranseta.common.view.FabOnVisibilityChangedListener;
@@ -67,6 +70,24 @@ public class MainActivity extends BaseActivity
                     mAppBarLayout.setExpanded(true, true);
                     mSearchMenuItem.expandActionView();
                     mSearchView.requestFocus();
+                }
+            }
+        });
+
+        //
+        FastScrollRecyclerView recyclerView = (FastScrollRecyclerView) findViewById(R.id.recycler_view);
+        recyclerView.setStateChangeListener(new OnFastScrollStateChangeListener() {
+            @Override
+            public void onFastScrollStart() {
+                if (mFab != null) {
+                    mFab.hide(new FabOnVisibilityChangedListener());
+                }
+            }
+
+            @Override
+            public void onFastScrollStop() {
+                if (mFab != null) {
+                    mFab.show();
                 }
             }
         });
